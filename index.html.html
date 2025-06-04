@@ -22,6 +22,132 @@
         p {
             line-height: 1.8; /* Better line spacing for readability */
         }
+        /* Chatbot specific styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Changed to left for RTL */
+            width: 350px;
+            height: 500px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            transform: translateY(100%) scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            transform-origin: bottom left; /* Changed origin */
+        }
+        .chatbot-container.open {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        .chatbot-header {
+            background-color: #10B981; /* Green-700 */
+            color: white;
+            padding: 16px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            background-color: #f9fafb; /* Gray-50 */
+            display: flex;
+            flex-direction: column-reverse; /* Display new messages at the bottom */
+        }
+        .message {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .message.user {
+            background-color: #DCF8C6; /* Light green for user */
+            align-self: flex-start; /* User messages on the left in RTL */
+            margin-left: auto; /* Push to right in RTL */
+        }
+        .message.bot {
+            background-color: #E2E8F0; /* Light gray for bot */
+            align-self: flex-end; /* Bot messages on the right in RTL */
+            margin-right: auto; /* Push to left in RTL */
+        }
+        .chatbot-input-area {
+            display: flex;
+            padding: 16px;
+            border-top: 1px solid #E5E7EB; /* Gray-200 */
+            background-color: #ffffff;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+        .chatbot-input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #D1D5DB; /* Gray-300 */
+            border-radius: 25px;
+            margin-left: 8px; /* Space between input and button */
+            font-size: 1rem;
+            outline: none;
+        }
+        .chatbot-input:focus {
+            border-color: #10B981; /* Green-600 */
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+        .chatbot-send-button {
+            background-color: #10B981; /* Green-600 */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .chatbot-send-button:hover {
+            background-color: #059669; /* Green-700 */
+        }
+        .chatbot-toggle-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Changed to left for RTL */
+            background-color: #10B981; /* Green-600 */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+        .chatbot-toggle-button:hover {
+            transform: scale(1.1);
+        }
+        .loading-indicator {
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #6B7280; /* Gray-500 */
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -31,7 +157,7 @@
         <div class="container mx-auto px-4 flex justify-between items-center flex-wrap">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
                 <!-- لوگو (Logo) -->
-                <img src="https://placehold.co/60x60/10B981/FFFFFF?text=ڈیری+فارم+لوگو" alt="ملک ڈیری فارم لوگو" class="rounded-full">
+                <img src="1146662c-9b31-42fa-b6eb-8e5c26a461e6.jpg-5ece3eec-3852-42a4-847f-ebffd1c8004c" alt="ملک ڈیری فارم لوگو" class="rounded-full w-16 h-16 object-contain">
                 <h1 class="text-3xl font-bold text-green-700">ملک ڈیری فارم</h1>
             </div>
             <nav class="mt-4 md:mt-0">
@@ -48,9 +174,8 @@
 
     <!-- ہیرو سیکشن (Hero Section) -->
     <section id="home" class="relative bg-green-100 text-center py-20 md:py-32 overflow-hidden rounded-b-lg">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x800/A7F3D0/10B981?text=گائے+یا+بھینس+کا+خوبصورت+نظارہ');">
-            <!-- Fallback image in case the main image fails to load -->
-            <img src="https://placehold.co/1920x800/A7F3D0/10B981?text=گائے+یا+بھینس+کا+خوبصورت+نظارہ" alt="ڈیری فارم کا منظر" class="hidden" onerror="this.src='https://placehold.co/1920x800/A7F3D0/10B981?text=ڈیری+فارم+کا+منظر'; this.classList.remove('hidden');">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('WhatsApp Image 2025-06-04 at 20.14.56.jpeg-8cd3a9f5-2131-4639-b25a-5a8acf33a47c');">
+            <img src="WhatsApp Image 2025-06-04 at 20.14.56.jpeg-8cd3a9f5-2131-4639-b25a-5a8acf33a47c" alt="ڈیری فارم کا منظر" class="hidden" onerror="this.src='https://placehold.co/1920x800/A7F3D0/10B981?text=ڈیری+فارم+کا+منظر'; this.classList.remove('hidden');">
         </div>
         <div class="relative z-10 container mx-auto px-4 bg-black bg-opacity-40 p-8 rounded-lg max-w-2xl">
             <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">ملک ڈیری فارم</h2>
@@ -95,7 +220,7 @@
                     </blockquote>
                 </div>
                 <div class="flex justify-center items-center">
-                    <img src="https://placehold.co/500x350/D1FAE5/10B981?text=ہمارے+بارے+میں+تصویر" alt="ہمارے بارے میں" class="rounded-lg shadow-md w-full max-w-md">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.55 (1).jpeg-bca51485-8371-48dd-b25a-5a8acf33a47c" alt="ہمارے بارے میں" class="rounded-lg shadow-md w-full max-w-md">
                 </div>
             </div>
         </div>
@@ -108,49 +233,49 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- پروڈکٹ کارڈ: خالص بھینس کا دودھ -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بھینس+کا+دودھ" alt="خالص بھینس کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.55.jpeg-6b51e6b4-a2d5-4d34-b374-0415e1c2a510" alt="خالص بھینس کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص بھینس کا دودھ</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 180 روپے/لیٹر</p>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 250 روپے/لیٹر</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: خالص گائے کا دودھ -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=گائے+کا+دودھ" alt="خالص گائے کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.55 (1).jpeg-9bc7532c-5516-4db7-933b-34507f00d456" alt="خالص گائے کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص گائے کا دودھ</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 160 روپے/لیٹر</p>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 220 روپے/لیٹر</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: دیسی گھی -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=دیسی+گھی" alt="دیسی گھی" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.54 (2).jpeg-fde230dc-3991-4aeb-9b29-b4b1ffd66629" alt="دیسی گھی" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">دیسی گھی</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 2500 روپے/کلو</p>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 3000 روپے/کلو</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: حاملہ گائے -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=حاملہ+گائے" alt="حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.54 (1).jpeg-d56e6bb6-199d-4ffe-bdcd-91aea4be249e" alt="حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">حاملہ گائے</h3>
                     <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: غیر حاملہ گائے -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=غیر+حاملہ+گائے" alt="غیر حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.53 (1).jpeg-f2a9dec7-dcc6-442b-b437-f3f984650c7b" alt="غیر حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">غیر حاملہ گائے</h3>
                     <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: بکرا (نر) -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بکرا+(نر)" alt="بکرا (نر)" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.52.jpeg-cb899187-9afc-41b3-bd68-3fae3b5b5f7e" alt="بکرا (نر)" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکرا (نر)</h3>
                     <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
                 </div>
                 <!-- پروڈکٹ کارڈ: بکری (مادہ) -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بکری+(مادہ)" alt="بکری (مادہ)" class="w-full h-48 object-cover rounded-md mb-4">
+                    <img src="WhatsApp Image 2025-06-04 at 20.14.53.jpeg-02494dca-a52f-4fce-8918-f3c6eb13c93d" alt="بکری (مادہ)" class="w-full h-48 object-cover rounded-md mb-4">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکری (مادہ)</h3>
                     <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
                     <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
@@ -211,12 +336,13 @@
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center text-green-700 mb-12">فارم گیلری</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=گائے+فارم+میں" alt="گائے فارم میں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=بھینسیں+چراگاہ+میں" alt="بھینسیں چراگاہ میں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=دودھ+دہنے+کا+منظر" alt="دودھ دہنے کا منظر" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=فارم+کا+ایک+اور+نظارہ" alt="فارم کا ایک اور نظارہ" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=تازہ+دودھ+کی+بوتلیں" alt="تازہ دودھ کی بوتلیں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=فارم+کی+عمارت" alt="فارم کی عمارت" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <!-- Updated image sources for the gallery -->
+                <img src="WhatsApp Image 2025-06-04 at 09.35.53.jpeg-6990f903-3d06-471c-9bdd-e6dcf1affc2e" alt="گائے فارم میں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="WhatsApp Image 2025-06-04 at 09.35.54 (1).jpeg-09973e56-9b03-434f-a9b0-be201eefafe1" alt="بھینسیں چراگاہ میں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="WhatsApp Image 2025-06-04 at 09.35.54.jpeg-a5e7d45d-2ad2-4855-a335-6d65e8b958a1" alt="دودھ دہنے کا منظر" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="WhatsApp Image 2025-06-04 at 20.39.06 (1).jpeg-cde0f9bc-24ac-4d40-bd94-4c5481eba18f" alt="فارم کا ایک اور نظارہ" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="WhatsApp Image 2025-06-04 at 20.39.06.jpeg-ebaff925-f4e1-43c2-89a9-9340cab8fe1f" alt="تازہ دودھ کی بوتلیں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="WhatsApp Image 2025-06-04 at 20.39.13.jpeg-310e5959-3aab-4a8a-82fa-3f3beec26023" alt="فارم کی عمارت" class="w-full h-64 object-cover rounded-lg shadow-md">
             </div>
         </div>
     </section>
@@ -278,7 +404,115 @@
                 <a href="https://wa.me/923001234567" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
-    </footer>
+    </footer >
 
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle-button">
+        💬
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">
+            <span>ملک ڈیری بوٹ</span>
+            <button id="chatbot-close" class="text-white text-2xl leading-none">×</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Messages will be appended here -->
+            <div class="message bot">
+                <p>السلام علیکم! ملک ڈیری فارم میں خوش آمدید۔ میں آپ کی کیا مدد کر سکتا ہوں؟</p>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" class="chatbot-input" placeholder="اپنا سوال یہاں لکھیں...">
+            <button id="chatbot-send" class="chatbot-send-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('open');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('open');
+        });
+
+        // Function to add a message to the chat window
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatbotMessages.prepend(messageDiv); // Prepend to show new messages at the bottom (due to flex-direction-reverse)
+        }
+
+        // Function to send message to AI
+        async function sendMessageToAI(prompt) {
+            addMessage('...ٹائپ کر رہا ہے', 'bot loading-indicator'); // Add loading indicator
+            const loadingMessage = chatbotMessages.querySelector('.loading-indicator');
+
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (loadingMessage) {
+                    loadingMessage.remove(); // Remove loading indicator
+                }
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    addMessage(text, 'bot');
+                } else {
+                    addMessage('معذرت، میں آپ کے سوال کا جواب نہیں دے سکا۔ براہ کرم دوبارہ کوشش کریں۔', 'bot');
+                    console.error('AI response structure unexpected:', result);
+                }
+            } catch (error) {
+                if (loadingMessage) {
+                    loadingMessage.remove(); // Remove loading indicator
+                }
+                addMessage('معذرت، ایک خرابی پیش آگئی۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔', 'bot');
+                console.error('Error calling Gemini API:', error);
+            }
+        }
+
+        // Send message on button click or Enter key press
+        chatbotSend.addEventListener('click', () => {
+            const userMessage = chatbotInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, 'user');
+                sendMessageToAI(userMessage);
+                chatbotInput.value = '';
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
+            }
+        });
+    </script>
 </body>
-</html>
+                        </html>
