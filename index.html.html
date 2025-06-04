@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملک ڈیری فارم - خالص دودھ، صحت مند زندگی</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter (for general text, though Urdu fonts might be different in practice) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Fallback for general elements */
+            /* For Urdu text, a more suitable font like Jameel Noori Nastaleeq or Noto Nastaliq Urdu would be ideal if available via CDN */
+        }
+        /* Custom styles for better Urdu readability if specific fonts are not loaded */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700; /* Bold for headings */
+        }
+        p {
+            line-height: 1.8; /* Better line spacing for readability */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- نیویگیشن بار (Navigation Bar) -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center flex-wrap">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <!-- لوگو (Logo) -->
+                <img src="https://placehold.co/60x60/10B981/FFFFFF?text=ڈیری+فارم+لوگو" alt="ملک ڈیری فارم لوگو" class="rounded-full">
+                <h1 class="text-3xl font-bold text-green-700">ملک ڈیری فارم</h1>
+            </div>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 rtl:md:space-x-reverse text-lg">
+                    <li><a href="#home" class="text-gray-700 hover:text-green-600 transition duration-300">ہوم پیج</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-green-600 transition duration-300">ہمارے بارے میں</a></li>
+                    <li><a href="#products" class="text-gray-700 hover:text-green-600 transition duration-300">مصنوعات</a></li>
+                    <li><a href="#reviews" class="text-gray-700 hover:text-green-600 transition duration-300">کسٹمر ریویوز</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-green-600 transition duration-300">رابطہ کریں</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ہیرو سیکشن (Hero Section) -->
+    <section id="home" class="relative bg-green-100 text-center py-20 md:py-32 overflow-hidden rounded-b-lg">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x800/A7F3D0/10B981?text=گائے+یا+بھینس+کا+خوبصورت+نظارہ');">
+            <!-- Fallback image in case the main image fails to load -->
+            <img src="https://placehold.co/1920x800/A7F3D0/10B981?text=گائے+یا+بھینس+کا+خوبصورت+نظارہ" alt="ڈیری فارم کا منظر" class="hidden" onerror="this.src='https://placehold.co/1920x800/A7F3D0/10B981?text=ڈیری+فارم+کا+منظر'; this.classList.remove('hidden');">
+        </div>
+        <div class="relative z-10 container mx-auto px-4 bg-black bg-opacity-40 p-8 rounded-lg max-w-2xl">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">ملک ڈیری فارم</h2>
+            <p class="text-2xl md:text-3xl text-white font-medium mb-8">"خالص دودھ، صحت مند زندگی"</p>
+            <a href="#products" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">ہماری مصنوعات دیکھیں</a>
+        </div>
+    </section>
+
+    <!-- ہمارے بارے میں (About Us) -->
+    <section id="about" class="container mx-auto px-4 py-16 md:py-24">
+        <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
+            <h2 class="text-4xl font-bold text-center text-green-700 mb-8">ہمارے بارے میں</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg leading-relaxed">
+                    <p class="mb-4">ملک ڈیری فارم ایک قابلِ اعتماد نام ہے جہاں صحت مند اور اعلیٰ نسل کے جانوروں کی خرید و فروخت کی جاتی ہے۔ ہم خاص طور پر حاملہ گائے، بھینس، بکرے، بکریاں اور دیگر فارم کے جانور فراہم کرتے ہیں۔ ہمارے جانور دیسی خوراک اور مکمل دیکھ بھال کے ساتھ پالے جاتے ہیں، تاکہ خریدار کو صحت مند، مطمئن اور پیداوار کے لیے تیار جانور ملے۔</p>
+                    <p class="mb-4">ہمارا مقصد ہے کہ پاکستان بھر میں فارم ہاؤس مالکان، کسان، اور ڈیری کاروبار کرنے والے افراد کو معیاری جانور مہیا کیے جائیں۔</p>
+                    <p class="mb-6">اگرچہ ہم دودھ کی فراہمی بھی کرتے ہیں، لیکن ہماری اصل شناخت جانوروں کی خالص نسل اور صحت ہے۔</p>
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">🔰 ہماری خدمات:</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li>حاملہ گائے اور بھینس کی فراہمی</li>
+                        <li>بکروں اور بکریوں کی سیل</li>
+                        <li>صحت مند بچھڑے، بکری کے بچے (Kids)</li>
+                        <li>ضرورت کے مطابق دودھ کی ہوم ڈیلیوری</li>
+                        <li>آن لائن اور فون پر آرڈر کی سہولت</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">💬 ہمارا مشن:</h3>
+                    <p class="mb-4">ہمارا مشن یہ ہے کہ پاکستان بھر میں فارمرز، فارم ہاؤس مالکان، اور ڈیری کاروبار سے وابستہ افراد کو صحت مند، خالص نسل اور پیداواری لحاظ سے بہترین جانور فراہم کیے جائیں — تاکہ ان کا کاروبار ترقی کرے اور انہیں اعلیٰ معیار کی خدمت میسر آئے۔</p>
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">ہماری ترجیح یہ ہے کہ:</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        <li>ہر خریدار کو اس کی ضرورت کے مطابق جانور مہیا کیا جائے</li>
+                        <li>جانوروں کی صحت، خوراک، اور دیکھ بھال میں کوئی سمجھوتہ نہ کیا جائے</li>
+                        <li>اعتماد، ایمانداری اور شفاف لین دین کو ترجیح دی جائے</li>
+                        <li>دودھ و دیگر خدمات میں معیاری انداز اختیار کیا جائے</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">💬 ہمارا یقین:</h3>
+                    <blockquote class="text-xl italic text-gray-600 border-r-4 border-green-600 pr-4 rtl:border-l-4 rtl:pl-4 rtl:pr-0">
+                        <p>“ہم وہ بیچتے ہیں، جو ہم خود رکھنا پسند کریں۔”</p>
+                    </blockquote>
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="https://placehold.co/500x350/D1FAE5/10B981?text=ہمارے+بارے+میں+تصویر" alt="ہمارے بارے میں" class="rounded-lg shadow-md w-full max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مصنوعات (Our Products) -->
+    <section id="products" class="bg-green-50 py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">ہماری مصنوعات</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- پروڈکٹ کارڈ: خالص بھینس کا دودھ -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بھینس+کا+دودھ" alt="خالص بھینس کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص بھینس کا دودھ</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 180 روپے/لیٹر</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: خالص گائے کا دودھ -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=گائے+کا+دودھ" alt="خالص گائے کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص گائے کا دودھ</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 160 روپے/لیٹر</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: دیسی گھی -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=دیسی+گھی" alt="دیسی گھی" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">دیسی گھی</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 2500 روپے/کلو</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: حاملہ گائے -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=حاملہ+گائے" alt="حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">حاملہ گائے</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: غیر حاملہ گائے -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=غیر+حاملہ+گائے" alt="غیر حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">غیر حاملہ گائے</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: بکرا (نر) -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بکرا+(نر)" alt="بکرا (نر)" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکرا (نر)</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
+                </div>
+                <!-- پروڈکٹ کارڈ: بکری (مادہ) -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://placehold.co/300x200/D1FAE5/10B981?text=بکری+(مادہ)" alt="بکری (مادہ)" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکری (مادہ)</h3>
+                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- کسٹمر ریویوز (Customer Reviews) -->
+    <section id="reviews" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">کسٹمر ریویوز</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- ریویو 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">احمد علی</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"ملک ڈیری فارم کا دودھ واقعی خالص اور تازہ ہے۔ ہم کئی سالوں سے ان کی مصنوعات استعمال کر رہے ہیں اور ہمیشہ مطمئن رہتے ہیں۔"</p>
+                </div>
+                <!-- ریویو 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">فاطمہ خان</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"ان کا دیسی دہی بہت مزیدار ہے! میں نے پہلے کبھی اتنا خالص دہی نہیں کھایا۔ ڈیلیوری سروس بھی بہت اچھی ہے۔"</p>
+                </div>
+                <!-- ریویو 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">محمد عمران</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"ان کا گھی بہت ہی اعلیٰ معیار کا ہے۔ ملک ڈیری فارم کی مصنوعات پر پورا بھروسہ ہے۔"</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://web.facebook.com/profile.php?id=100091706868169" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    ہمیں فیس بک پر ریویو دیں
+                </a>
+                <a href="https://maps.app.goo.gl/yvfqZcKaGshzWDg6A?g_st=awb" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 mt-4 md:mt-0 md:mr-4 rtl:md:ml-4">
+                    ہمیں گوگل پر ریویو دیں
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- فارم گیلری (Farm Gallery) - اضافی تجویز -->
+    <section id="gallery" class="bg-green-50 py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">فارم گیلری</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=گائے+فارم+میں" alt="گائے فارم میں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=بھینسیں+چراگاہ+میں" alt="بھینسیں چراگاہ میں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=دودھ+دہنے+کا+منظر" alt="دودھ دہنے کا منظر" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=فارم+کا+ایک+اور+نظارہ" alt="فارم کا ایک اور نظارہ" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=تازہ+دودھ+کی+بوتلیں" alt="تازہ دودھ کی بوتلیں" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="https://placehold.co/400x300/D1FAE5/10B981?text=فارم+کی+عمارت" alt="فارم کی عمارت" class="w-full h-64 object-cover rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- رابطہ کریں (Contact Us) -->
+    <section id="contact" class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">رابطہ کریں</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg leading-relaxed space-y-6">
+                    <p class="flex items-center text-gray-700 text-xl"><i class="fas fa-phone-alt text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📞 فون نمبرز:
+                        <a href="tel:+923441789728" class="hover:underline mr-2 rtl:ml-2">03441789728</a>،
+                        <a href="tel:+923137652007" class="hover:underline mr-2 rtl:ml-2">03137652007</a>،
+                        <a href="tel:+923041857828" class="hover:underline mr-2 rtl:ml-2">03041857828</a>
+                    </p>
+                    <p class="flex items-start text-gray-700 text-xl"><i class="fas fa-map-marker-alt text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📍 پتہ: کچے 157NB شاہ نِکدر تحصیل سلانوالی ضلع سرگودھا</p>
+                    <p class="flex items-center text-gray-700 text-xl"><i class="fas fa-envelope text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📧 ای میل: <a href="mailto:Malakdairyfarm@gmail.com" class="hover:underline mr-2 rtl:ml-2">Malakdairyfarm@gmail.com</a></p>
+                    <a href="https://wa.me/923137652007" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">
+                        <i class="fab fa-whatsapp text-2xl mr-3 rtl:ml-3"></i> 📱 واٹس ایپ بٹن
+                    </a>
+                </div>
+                <div class="flex justify-center">
+                    <!-- گوگل میپ لوکیشن (Google Map Location) -->
+                    <iframe
+                        src="https://maps.app.goo.gl/yvfqZcKaGshzWDg6A?g_st=awb"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        class="rounded-lg shadow-md w-full max-w-md"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نیوز لیٹر سبسکرپشن (Newsletter Subscription) - اضافی تجویز -->
+    <section id="newsletter" class="bg-green-700 text-white py-16 md:py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">نیوز لیٹر سبسکرپشن</h2>
+            <p class="text-xl md:text-2xl mb-8">"تازہ آفرز اور نئی مصنوعات کے لیے سبسکرائب کریں"</p>
+            <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
+                <input
+                    type="email"
+                    placeholder="اپنا ای میل یہاں درج کریں"
+                    class="flex-grow p-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
+                    required
+                >
+                <button type="submit" class="bg-white text-green-700 font-bold py-4 px-8 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+                    سبسکرائب کریں
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- فوٹر (Footer) -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-right">
+            <p class="mb-4 md:mb-0 text-lg">© 2025 ملک ڈیری فارم - تمام حقوق محفوظ ہیں</p>
+            <div class="flex space-x-6 rtl:space-x-reverse text-2xl">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/923001234567" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
