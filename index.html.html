@@ -1,518 +1,480 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملک ڈیری فارم - خالص دودھ، صحت مند زندگی</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter (for general text, though Urdu fonts might be different in practice) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif; /* Fallback for general elements */
-            /* For Urdu text, a more suitable font like Jameel Noori Nastaleeq or Noto Nastaliq Urdu would be ideal if available via CDN */
-        }
-        /* Custom styles for better Urdu readability if specific fonts are not loaded */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700; /* Bold for headings */
-        }
-        p {
-            line-height: 1.8; /* Better line spacing for readability */
-        }
-        /* Chatbot specific styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px; /* Changed to left for RTL */
-            width: 350px;
-            height: 500px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 1000;
-            transform: translateY(100%) scale(0.8);
-            opacity: 0;
-            transition: all 0.3s ease-in-out;
-            transform-origin: bottom left; /* Changed origin */
-        }
-        .chatbot-container.open {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-        .chatbot-header {
-            background-color: #10B981; /* Green-700 */
-            color: white;
-            padding: 16px;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-        .chatbot-messages {
-            flex-grow: 1;
-            padding: 16px;
-            overflow-y: auto;
-            background-color: #f9fafb; /* Gray-50 */
-            display: flex;
-            flex-direction: column-reverse; /* Display new messages at the bottom */
-        }
-        .message {
-            max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-        .message.user {
-            background-color: #DCF8C6; /* Light green for user */
-            align-self: flex-start; /* User messages on the left in RTL */
-            margin-left: auto; /* Push to right in RTL */
-        }
-        .message.bot {
-            background-color: #E2E8F0; /* Light gray for bot */
-            align-self: flex-end; /* Bot messages on the right in RTL */
-            margin-right: auto; /* Push to left in RTL */
-        }
-        .chatbot-input-area {
-            display: flex;
-            padding: 16px;
-            border-top: 1px solid #E5E7EB; /* Gray-200 */
-            background-color: #ffffff;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-        .chatbot-input {
-            flex-grow: 1;
-            padding: 12px;
-            border: 1px solid #D1D5DB; /* Gray-300 */
-            border-radius: 25px;
-            margin-left: 8px; /* Space between input and button */
-            font-size: 1rem;
-            outline: none;
-        }
-        .chatbot-input:focus {
-            border-color: #10B981; /* Green-600 */
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-        }
-        .chatbot-send-button {
-            background-color: #10B981; /* Green-600 */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .chatbot-send-button:hover {
-            background-color: #059669; /* Green-700 */
-        }
-        .chatbot-toggle-button {
-            position: fixed;
-            bottom: 20px;
-            left: 20px; /* Changed to left for RTL */
-            background-color: #10B981; /* Green-600 */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            z-index: 1001;
-        }
-        .chatbot-toggle-button:hover {
-            transform: scale(1.1);
-        }
-        .loading-indicator {
-            text-align: center;
-            padding: 10px;
-            font-style: italic;
-            color: #6B7280; /* Gray-500 */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رانا منور غوث خان — صوبائی وزیر برائے عشر و زکوٰۃ</title>
+  <meta name="description" content="رانا منور غوث خان — تجربہ کار عوامی رہنما، صوبائی وزیر برائے عشر و زکوٰۃ۔ عوامی خدمت، شفافیت اور فلاحی منصوبوں کا عزم۔" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            urdu: ['"Jameel Noori Nastaleeq"', 'Noto Nastaliq Urdu', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: { DEFAULT: '#1abc9c', dark: '#16a085' },
+            brand: '#2c3e50',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Fonts -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+    @font-face{
+      font-family:'Jameel Noori Nastaleeq';
+      src:url('https://cdn.jsdelivr.net/font-jameel-noori-nastaleeq/Jameel-Noori-Nastaleeq.ttf') format('truetype');
+      font-weight:normal; font-style:normal;
+    }
+    :root{ scroll-behavior:smooth; }
+    body{ font-family:'urdu','Noto Nastaliq Urdu','Inter',sans-serif; background-color:#f4f7f6; }
+    .container{ max-width:1280px; margin:0 auto; padding:0 1rem; }
+    .text-content p,.text-content ul,.text-content h1,.text-content h2,.text-content h3,.text-content h4,.text-content h5{ text-align:right; direction:rtl; }
+    .text-content p{ line-height:2; }
+    .shadow-lg-custom{ box-shadow:0 10px 20px rgba(0,0,0,.1),0 6px 6px rgba(0,0,0,.15); }
+    .nav-item.active{ color:#1abc9c !important; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
 
-    <!-- نیویگیشن بار (Navigation Bar) -->
-    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
-        <div class="container mx-auto px-4 flex justify-between items-center flex-wrap">
-            <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                <!-- لوگو (Logo) -->
-                <img src="1146662c-9b31-42fa-b6eb-8e5c26a461e6.jpg-5ece3eec-3852-42a4-847f-ebffd1c8004c" alt="ملک ڈیری فارم لوگو" class="rounded-full w-16 h-16 object-contain">
-                <h1 class="text-3xl font-bold text-green-700">ملک ڈیری فارم</h1>
-            </div>
-            <nav class="mt-4 md:mt-0">
-                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 rtl:md:space-x-reverse text-lg">
-                    <li><a href="#home" class="text-gray-700 hover:text-green-600 transition duration-300">ہوم پیج</a></li>
-                    <li><a href="#about" class="text-gray-700 hover:text-green-600 transition duration-300">ہمارے بارے میں</a></li>
-                    <li><a href="#products" class="text-gray-700 hover:text-green-600 transition duration-300">مصنوعات</a></li>
-                    <li><a href="#reviews" class="text-gray-700 hover:text-green-600 transition duration-300">کسٹمر ریویوز</a></li>
-                    <li><a href="#contact" class="text-gray-700 hover:text-green-600 transition duration-300">رابطہ کریں</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="bg-gray-50 text-gray-800 dark:bg-[#0b141a] dark:text-gray-100">
+  <!-- Header -->
+  <header class="bg-white/90 backdrop-blur shadow-lg-custom sticky top-0 z-50 dark:bg-[#0f1b22]/80">
+    <div class="container flex items-center justify-between py-3">
+      <a href="#" class="flex items-center space-x-2 space-x-reverse" onclick="loadPage('home', event)">
+        <span class="text-2xl md:text-3xl font-bold text-brand dark:text-white">رانا منور غوث خان</span>
+      </a>
 
-    <!-- ہیرو سیکشن (Hero Section) -->
-    <section id="home" class="relative bg-green-100 text-center py-20 md:py-32 overflow-hidden rounded-b-lg">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('WhatsApp Image 2025-06-04 at 20.14.56.jpeg-8cd3a9f5-2131-4639-b25a-5a8acf33a47c');">
-            <img src="WhatsApp Image 2025-06-04 at 20.14.56.jpeg-8cd3a9f5-2131-4639-b25a-5a8acf33a47c" alt="ڈیری فارم کا منظر" class="hidden" onerror="this.src='https://placehold.co/1920x800/A7F3D0/10B981?text=ڈیری+فارم+کا+منظر'; this.classList.remove('hidden');">
-        </div>
-        <div class="relative z-10 container mx-auto px-4 bg-black bg-opacity-40 p-8 rounded-lg max-w-2xl">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">ملک ڈیری فارم</h2>
-            <p class="text-2xl md:text-3xl text-white font-medium mb-8">"خالص دودھ، صحت مند زندگی"</p>
-            <a href="#products" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">ہماری مصنوعات دیکھیں</a>
-        </div>
-    </section>
+      <nav class="hidden md:flex items-center gap-4 text-lg font-urdu font-semibold">
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="home" onclick="loadPage('home', event)">ہوم</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="about" onclick="loadPage('about', event)">تعارف</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="political-career" onclick="loadPage('political-career', event)">سیاسی سفر</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="zakat-programs" onclick="loadPage('zakat-programs', event)">عشر و زکوٰۃ کے منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="public-welfare-projects" onclick="loadPage('public-welfare-projects', event)">عوامی فلاحی منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="development-projects" onclick="loadPage('development-projects', event)">ترقیاتی منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="message" onclick="loadPage('message', event)">وزیر کا پیغام</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="contact" onclick="loadPage('contact', event)">ہم سے رابطہ</a>
 
-    <!-- ہمارے بارے میں (About Us) -->
-    <section id="about" class="container mx-auto px-4 py-16 md:py-24">
-        <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
-            <h2 class="text-4xl font-bold text-center text-green-700 mb-8">ہمارے بارے میں</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="text-lg leading-relaxed">
-                    <p class="mb-4">ملک ڈیری فارم ایک قابلِ اعتماد نام ہے جہاں صحت مند اور اعلیٰ نسل کے جانوروں کی خرید و فروخت کی جاتی ہے۔ ہم خاص طور پر حاملہ گائے، بھینس، بکرے، بکریاں اور دیگر فارم کے جانور فراہم کرتے ہیں۔ ہمارے جانور دیسی خوراک اور مکمل دیکھ بھال کے ساتھ پالے جاتے ہیں، تاکہ خریدار کو صحت مند، مطمئن اور پیداوار کے لیے تیار جانور ملے۔</p>
-                    <p class="mb-4">ہمارا مقصد ہے کہ پاکستان بھر میں فارم ہاؤس مالکان، کسان، اور ڈیری کاروبار کرنے والے افراد کو معیاری جانور مہیا کیے جائیں۔</p>
-                    <p class="mb-6">اگرچہ ہم دودھ کی فراہمی بھی کرتے ہیں، لیکن ہماری اصل شناخت جانوروں کی خالص نسل اور صحت ہے۔</p>
+        <!-- Dark mode -->
+        <button id="themeToggle" class="ml-2 rounded-full border px-3 py-1 text-sm text-gray-700 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-white/10">
+          ڈارک/لائٹ
+        </button>
+      </nav>
 
-                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">🔰 ہماری خدمات:</h3>
-                    <ul class="list-disc list-inside space-y-2 mb-6">
-                        <li>حاملہ گائے اور بھینس کی فراہمی</li>
-                        <li>بکروں اور بکریوں کی سیل</li>
-                        <li>صحت مند بچھڑے، بکری کے بچے (Kids)</li>
-                        <li>ضرورت کے مطابق دودھ کی ہوم ڈیلیوری</li>
-                        <li>آن لائن اور فون پر آرڈر کی سہولت</li>
-                    </ul>
-
-                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">💬 ہمارا مشن:</h3>
-                    <p class="mb-4">ہمارا مشن یہ ہے کہ پاکستان بھر میں فارمرز، فارم ہاؤس مالکان، اور ڈیری کاروبار سے وابستہ افراد کو صحت مند، خالص نسل اور پیداواری لحاظ سے بہترین جانور فراہم کیے جائیں — تاکہ ان کا کاروبار ترقی کرے اور انہیں اعلیٰ معیار کی خدمت میسر آئے۔</p>
-
-                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">ہماری ترجیح یہ ہے کہ:</h3>
-                    <ul class="list-disc list-inside space-y-2 mb-6">
-                        <li>ہر خریدار کو اس کی ضرورت کے مطابق جانور مہیا کیا جائے</li>
-                        <li>جانوروں کی صحت، خوراک، اور دیکھ بھال میں کوئی سمجھوتہ نہ کیا جائے</li>
-                        <li>اعتماد، ایمانداری اور شفاف لین دین کو ترجیح دی جائے</li>
-                        <li>دودھ و دیگر خدمات میں معیاری انداز اختیار کیا جائے</li>
-                    </ul>
-
-                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">💬 ہمارا یقین:</h3>
-                    <blockquote class="text-xl italic text-gray-600 border-r-4 border-green-600 pr-4 rtl:border-l-4 rtl:pl-4 rtl:pr-0">
-                        <p>“ہم وہ بیچتے ہیں، جو ہم خود رکھنا پسند کریں۔”</p>
-                    </blockquote>
-                </div>
-                <div class="flex justify-center items-center">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.55 (1).jpeg-bca51485-8371-48dd-b25a-5a8acf33a47c" alt="ہمارے بارے میں" class="rounded-lg shadow-md w-full max-w-md">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- مصنوعات (Our Products) -->
-    <section id="products" class="bg-green-50 py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">ہماری مصنوعات</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- پروڈکٹ کارڈ: خالص بھینس کا دودھ -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.55.jpeg-6b51e6b4-a2d5-4d34-b374-0415e1c2a510" alt="خالص بھینس کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص بھینس کا دودھ</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 250 روپے/لیٹر</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: خالص گائے کا دودھ -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.55 (1).jpeg-9bc7532c-5516-4db7-933b-34507f00d456" alt="خالص گائے کا دودھ" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">خالص گائے کا دودھ</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 220 روپے/لیٹر</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: دیسی گھی -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.54 (2).jpeg-fde230dc-3991-4aeb-9b29-b4b1ffd66629" alt="دیسی گھی" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">دیسی گھی</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: 3000 روپے/کلو</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">آرڈر کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: حاملہ گائے -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.54 (1).jpeg-d56e6bb6-199d-4ffe-bdcd-91aea4be249e" alt="حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">حاملہ گائے</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: غیر حاملہ گائے -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.53 (1).jpeg-f2a9dec7-dcc6-442b-b437-f3f984650c7b" alt="غیر حاملہ گائے" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">غیر حاملہ گائے</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: بکرا (نر) -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.52.jpeg-cb899187-9afc-41b3-bd68-3fae3b5b5f7e" alt="بکرا (نر)" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکرا (نر)</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
-                </div>
-                <!-- پروڈکٹ کارڈ: بکری (مادہ) -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                    <img src="WhatsApp Image 2025-06-04 at 20.14.53.jpeg-02494dca-a52f-4fce-8918-f3c6eb13c93d" alt="بکری (مادہ)" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">بکری (مادہ)</h3>
-                    <p class="text-green-600 text-xl font-bold mb-4">قیمت: رابطہ کریں</p>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">رابطہ کریں</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- کسٹمر ریویوز (Customer Reviews) -->
-    <section id="reviews" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">کسٹمر ریویوز</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- ریویو 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">احمد علی</span>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"ملک ڈیری فارم کا دودھ واقعی خالص اور تازہ ہے۔ ہم کئی سالوں سے ان کی مصنوعات استعمال کر رہے ہیں اور ہمیشہ مطمئن رہتے ہیں۔"</p>
-                </div>
-                <!-- ریویو 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">فاطمہ خان</span>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"ان کا دیسی دہی بہت مزیدار ہے! میں نے پہلے کبھی اتنا خالص دہی نہیں کھایا۔ ڈیلیوری سروس بھی بہت اچھی ہے۔"</p>
-                </div>
-                <!-- ریویو 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-green-200 md:col-span-2">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <span class="font-semibold text-gray-700 mr-2 rtl:ml-2">محمد عمران</span>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">"ان کا گھی بہت ہی اعلیٰ معیار کا ہے۔ ملک ڈیری فارم کی مصنوعات پر پورا بھروسہ ہے۔"</p>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="https://web.facebook.com/profile.php?id=100091706868169" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
-                    ہمیں فیس بک پر ریویو دیں
-                </a>
-                <a href="https://maps.app.goo.gl/yvfqZcKaGshzWDg6A?g_st=awb" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 mt-4 md:mt-0 md:mr-4 rtl:md:ml-4">
-                    ہمیں گوگل پر ریویو دیں
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- فارم گیلری (Farm Gallery) - اضافی تجویز -->
-    <section id="gallery" class="bg-green-50 py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">فارم گیلری</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Updated image sources for the gallery -->
-                <img src="WhatsApp Image 2025-06-04 at 09.35.53.jpeg-6990f903-3d06-471c-9bdd-e6dcf1affc2e" alt="گائے فارم میں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="WhatsApp Image 2025-06-04 at 09.35.54 (1).jpeg-09973e56-9b03-434f-a9b0-be201eefafe1" alt="بھینسیں چراگاہ میں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="WhatsApp Image 2025-06-04 at 09.35.54.jpeg-a5e7d45d-2ad2-4855-a335-6d65e8b958a1" alt="دودھ دہنے کا منظر" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="WhatsApp Image 2025-06-04 at 20.39.06 (1).jpeg-cde0f9bc-24ac-4d40-bd94-4c5481eba18f" alt="فارم کا ایک اور نظارہ" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="WhatsApp Image 2025-06-04 at 20.39.06.jpeg-ebaff925-f4e1-43c2-89a9-9340cab8fe1f" alt="تازہ دودھ کی بوتلیں" class="w-full h-64 object-cover rounded-lg shadow-md">
-                <img src="WhatsApp Image 2025-06-04 at 20.39.13.jpeg-310e5959-3aab-4a8a-82fa-3f3beec26023" alt="فارم کی عمارت" class="w-full h-64 object-cover rounded-lg shadow-md">
-            </div>
-        </div>
-    </section>
-
-    <!-- رابطہ کریں (Contact Us) -->
-    <section id="contact" class="bg-white py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-green-700 mb-12">رابطہ کریں</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="text-lg leading-relaxed space-y-6">
-                    <p class="flex items-center text-gray-700 text-xl"><i class="fas fa-phone-alt text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📞 فون نمبرز:
-                        <a href="tel:+923441789728" class="hover:underline mr-2 rtl:ml-2">03441789728</a>،
-                        <a href="tel:+923137652007" class="hover:underline mr-2 rtl:ml-2">03137652007</a>،
-                        <a href="tel:+923041857828" class="hover:underline mr-2 rtl:ml-2">03041857828</a>
-                    </p>
-                    <p class="flex items-start text-gray-700 text-xl"><i class="fas fa-map-marker-alt text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📍 پتہ: کچے 157NB شاہ نِکدر تحصیل سلانوالی ضلع سرگودھا</p>
-                    <p class="flex items-center text-gray-700 text-xl"><i class="fas fa-envelope text-green-600 text-2xl mr-4 rtl:ml-4"></i> 📧 ای میل: <a href="mailto:Malakdairyfarm@gmail.com" class="hover:underline mr-2 rtl:ml-2">Malakdairyfarm@gmail.com</a></p>
-                    <a href="https://wa.me/923137652007" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">
-                        <i class="fab fa-whatsapp text-2xl mr-3 rtl:ml-3"></i> 📱 واٹس ایپ بٹن
-                    </a>
-                </div>
-                <div class="flex justify-center">
-                    <!-- گوگل میپ لوکیشن (Google Map Location) -->
-                    <iframe
-                        src="https://maps.app.goo.gl/yvfqZcKaGshzWDg6A?g_st=awb"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        class="rounded-lg shadow-md w-full max-w-md"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- نیوز لیٹر سبسکرپشن (Newsletter Subscription) - اضافی تجویز -->
-    <section id="newsletter" class="bg-green-700 text-white py-16 md:py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">نیوز لیٹر سبسکرپشن</h2>
-            <p class="text-xl md:text-2xl mb-8">"تازہ آفرز اور نئی مصنوعات کے لیے سبسکرائب کریں"</p>
-            <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
-                <input
-                    type="email"
-                    placeholder="اپنا ای میل یہاں درج کریں"
-                    class="flex-grow p-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
-                    required
-                >
-                <button type="submit" class="bg-white text-green-700 font-bold py-4 px-8 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105">
-                    سبسکرائب کریں
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- فوٹر (Footer) -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-right">
-            <p class="mb-4 md:mb-0 text-lg">© 2025 ملک ڈیری فارم - تمام حقوق محفوظ ہیں</p>
-            <div class="flex space-x-6 rtl:space-x-reverse text-2xl">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer >
-
-    <!-- Chatbot Toggle Button -->
-    <button id="chatbot-toggle" class="chatbot-toggle-button">
-        💬
-    </button>
-
-    <!-- Chatbot Container -->
-    <div id="chatbot-container" class="chatbot-container">
-        <div class="chatbot-header">
-            <span>ملک ڈیری بوٹ</span>
-            <button id="chatbot-close" class="text-white text-2xl leading-none">×</button>
-        </div>
-        <div id="chatbot-messages" class="chatbot-messages">
-            <!-- Messages will be appended here -->
-            <div class="message bot">
-                <p>السلام علیکم! ملک ڈیری فارم میں خوش آمدید۔ میں آپ کی کیا مدد کر سکتا ہوں؟</p>
-            </div>
-        </div>
-        <div class="chatbot-input-area">
-            <input type="text" id="chatbot-input" class="chatbot-input" placeholder="اپنا سوال یہاں لکھیں...">
-            <button id="chatbot-send" class="chatbot-send-button">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+      <!-- Mobile buttons -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="themeToggleMobile" class="rounded-full border px-3 py-1 text-sm text-gray-700 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-white/10">
+          موڈ
+        </button>
+        <button id="menu-button" class="text-gray-700 dark:text-gray-100 focus:outline-none" aria-label="menu">
+          <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <script>
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotContainer = document.getElementById('chatbot-container');
-        const chatbotClose = document.getElementById('chatbot-close');
-        const chatbotMessages = document.getElementById('chatbot-messages');
-        const chatbotInput = document.getElementById('chatbot-input');
-        const chatbotSend = document.getElementById('chatbot-send');
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#0f1b22] shadow-lg-custom p-4 border-t dark:border-gray-800">
+      <nav class="flex flex-col space-y-2 text-lg font-urdu font-semibold">
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="home" onclick="loadPage('home', event)">ہوم</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="about" onclick="loadPage('about', event)">تعارف</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="political-career" onclick="loadPage('political-career', event)">سیاسی سفر</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="zakat-programs" onclick="loadPage('zakat-programs', event)">عشر و زکوٰۃ کے منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="public-welfare-projects" onclick="loadPage('public-welfare-projects', event)">عوامی فلاحی منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="development-projects" onclick="loadPage('development-projects', event)">ترقیاتی منصوبے</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="message" onclick="loadPage('message', event)">وزیر کا پیغام</a>
+        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="contact" onclick="loadPage('contact', event)">ہم سے رابطہ</a>
+      </nav>
+    </div>
+  </header>
 
-        // Toggle chatbot visibility
-        chatbotToggle.addEventListener('click', () => {
-            chatbotContainer.classList.toggle('open');
+  <!-- Main -->
+  <main id="content" class="py-10 px-4"></main>
+
+  <!-- Footer -->
+  <footer class="bg-brand text-white py-8 text-center font-urdu mt-12">
+    <div class="container flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-right">
+        <p class="text-base">&copy; 2025 رانا منور غوث خان — تمام حقوق محفوظ ہیں۔</p>
+        <div class="mt-2 text-sm opacity-90">
+          <a href="#" class="hover:underline mx-2">رازداری کی پالیسی</a> |
+          <a href="#" class="hover:underline mx-2">شرائطِ استعمال</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://www.facebook.com/share/19YSx7PmtZ/" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.505 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+          </svg>
+          <span>فیس بک</span>
+        </a>
+        <a href="https://www.tiktok.com/@rana.munawar.ghous?_t=ZN-8ygQbUCu6pa&_r=1" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.525 2.5v17.493c0 .025.025.05.05.05h1.229c.334 0 .552-.294.498-.636l-.004-3.037c.026-.008.051-.019.076-.027 3.018-1.427 4.986-4.524 4.986-8.243C19.36 4.708 16.326 2 12.525 2Zm-.023 15.655v-10.74c0-.623.504-1.127 1.127-1.127h2.366c.264 0 .478-.214.478-.478V3.5c0-.264-.214-.478-.478-.478h-2.366c-2.348 0-4.254 1.906-4.254 4.254v1.125h2.185v1.36h-2.185v4.545c0 1.942 1.579 3.521 3.521 3.521h1.127c.264 0 .478.214.478.478v.952c0 .264-.214.478-.478.478H12.522c-.623 0-1.127-.504-1.127-1.127v-1.125c0-.623.504-1.127 1.127-1.127h.001Z"/>
+          </svg>
+          <span>ٹک ٹاک</span>
+        </a>
+        <a href="https://wa.me/923008700120" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.012 2.012c-5.525 0-10.001 4.476-10.001 10.001 0 1.761.464 3.42.138 4.965l-1.07 3.924a.5.5 0 0 0 .614.614l3.924-1.07c1.545.326 3.204.138 4.965.138 5.525 0 10.001-4.476 10.001-10.001s-4.476-10.001-10.001-10.001z"/>
+          </svg>
+          <span>واٹس ایپ</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Elements
+    const contentDiv = document.getElementById('content');
+    const mobileMenuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Theme (Dark/Light) persistence
+    const THEME_KEY = 'rmgh-theme';
+    function applyTheme(theme){
+      const root = document.documentElement;
+      if(theme === 'dark'){ root.classList.add('dark'); }
+      else { root.classList.remove('dark'); }
+      localStorage.setItem(THEME_KEY, theme);
+    }
+    (function initTheme(){
+      const saved = localStorage.getItem(THEME_KEY) || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(saved);
+    })();
+    document.getElementById('themeToggle').addEventListener('click', ()=> {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+    document.getElementById('themeToggleMobile').addEventListener('click', ()=> {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    // Mobile menu
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Pages data
+    const pages = {
+      home: {
+        title: 'رانا منور غوث خان — صوبائی وزیر برائے عشر و زکوٰۃ',
+        metaDescription: 'رانا منور غوث خان — تجربہ کار عوامی رہنما، صوبائی وزیر برائے عشر و زکوٰۃ۔ عوامی خدمت، شفافیت اور فلاحی منصوبوں کا عزم۔',
+        html: `
+          <div class="container text-content">
+            <!-- Hero -->
+            <section class="rounded-xl shadow-lg-custom mb-12 relative overflow-hidden bg-cover bg-center" style="background-image:url('https://res.cloudinary.com/do4v5zrwm/image/upload/v1754586931/WhatsApp_Image_2025-08-07_at_22.14.45_msmfcg.jpg');">
+              <div class="bg-brand/80 text-white py-16 px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">خدمت، امانت، دیانت</h1>
+                <p class="text-xl md:text-2xl mt-4">رانا منور غوث خان — تجربہ کار اور عوام دوست سیاستدان۔</p>
+              </div>
+            </section>
+
+            <!-- Intro -->
+            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom mb-12">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">مختصر تعارف</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                رانا منور غوث خان ایک تجربہ کار سیاستدان ہیں جنہوں نے اپنی زندگی عوام کی خدمت کے لیے وقف کر رکھی ہے۔ انہوں نے اپنی تعلیم مکمل کرنے کے بعد سیاست میں قدم رکھا اور جلد ہی اپنی محنت اور لگن سے عوام کا اعتماد حاصل کیا۔ ان کا سیاسی سفر کئی اہم سنگ میلوں سے بھرا پڑا ہے، جس میں انہوں نے ہمیشہ عوام کے حقوق کے لیے آواز بلند کی اور ان کے مسائل کے حل کے لیے عملی اقدامات کیے۔ ان کی کامیابیاں ان کی انتھک محنت اور عوام دوستی کا ثبوت ہیں۔
+              </p>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom mb-12">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6 text-center">فوری لنکس</h2>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="#" onclick="loadPage('about', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">تعارف</a>
+                <a href="#" onclick="loadPage('political-career', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg白/20 transition">سیاسی سفر</a>
+                <a href="#" onclick="loadPage('zakat-programs', event)" class="bg-gray-100 dark:bg_white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">عشر و زکوٰۃ کے منصوبے</a>
+                <a href="#" onclick="loadPage('public-welfare-projects', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">عوامی فلاحی منصوبے</a>
+                <a href="#" onclick="loadPage('development-projects', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">ترقیاتی منصوبے</a>
+                <a href="#" onclick="loadPage('message', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">وزیر کا پیغام</a>
+                <a href="#" onclick="loadPage('contact', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">ہم سے رابطہ</a>
+              </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom text-center">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6">عوام کی خدمت، ہمارا مقصد</h2>
+              <a href="#" onclick="loadPage('about', event)" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-primary-dark transition">مزید جانیں</a>
+            </section>
+          </div>
+        `
+      },
+
+      about: {
+        title: 'تعارف — رانا منور غوث خان',
+        metaDescription: 'رانا منور غوث خان کی سوانح عمری، ابتدائی زندگی، تعلیم اور وژن برائے عوامی خدمت۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">تعارف</h1>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="order-2 md:order-1">
+                <p class="text-lg text-gray-700 dark:text-gray-200">
+                  رانا منور غوث خان ایک سوچے سمجھے، باعلم اور عوام دوست رہنما ہیں۔ آپ نے اپنے تعلیمی سفر اور سماجی خدمات کے ذریعے عوام کا اعتماد حاصل کیا اور اپنی سیاست کا محور ہمیشہ فلاحِ عامہ رکھا۔
+                </p>
+              </div>
+              <div class="order-1 md:order-2">
+                <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754582262/RANA_MUNAWAR_yddsa7.jpg" alt="رانا منور غوث خان کی پروفائل تصویر" class="rounded-xl shadow-lg-custom w-full h-auto">
+              </div>
+            </div>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">ابتدائی زندگی اور تعلیم</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                رانا منور غوث خان نے اپنی ابتدائی تعلیم مقامی اسکول سے حاصل کی اور آگے بڑھتے ہوئے علم کی پیاس کو جاری رکھا۔ انہوں نے 1991 میں گورنمنٹ کالج سرگودھا سے بیچلر کی ڈگری حاصل کی، جو ان کے علمی سفر کا ایک اہم سنگ میل ہے۔ تعلیم کے دوران وہ نہ صرف تعلیمی میدان میں سرگرم رہے بلکہ سماجی و فلاحی کاموں میں بھی بڑھ چڑھ کر حصہ لیتے رہے، جس نے بعد ازاں ان کی سیاسی بصیرت کو نکھارنے میں بنیادی کردار ادا کیا۔
+              </p>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">بطور وزیر تقرری</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                آپ اس وقت صوبہ پنجاب کے وزیر برائے عشر و زکوٰۃ کے طور پر خدمات انجام دے رہے ہیں،
+              </p>
+            </section>
+          </div>
+        `
+      },
+
+      'political-career': {
+        title: 'سیاسی سفر — رانا منور غوث خان',
+        metaDescription: 'رانا منور غوث خان کا سیاسی کیریئر، اہم عہدے اور عوامی خدمات۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">رانا منور غوث خان — سیاسی سفر</h1>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                رانا منور غوث خان، ضلع سرگودھا کے ایک مخلص اور تجربہ کار عوامی نمائندے ہیں، جو کئی دہائیوں سے عملی سیاست میں سرگرم ہیں۔ ان کا سیاسی سفر خدمت، شفافیت، اور عوامی فلاح کے عزم سے جڑا ہوا ہے۔
+              </p>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">ابتدائی سیاسی قدم</h2>
+                  <p class="text-lg text-gray-700 dark:text-gray-200">
+                    رانا منور غوث خان نے اپنے سیاسی سفر کا آغاز 2001 میں کیا، جب وہ تحصیل ناظم سلانوالی منتخب ہوئے۔ اس دور میں انہوں نے مقامی ترقیاتی منصوبوں، بنیادی سہولیات کی فراہمی، اور عوامی مسائل کے فوری حل پر خصوصی توجہ دی۔
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754586929/WhatsApp_Image_2025-08-07_at_22.13.35_ieprf7.jpg" alt="رانا منور غوث خان کا عوامی اجتماع" class="rounded-xl shadow-lg-custom w-full h-auto">
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">پنجاب اسمبلی میں خدمات</h2>
+              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-2">
+                <li><span class="font-bold">2008–2013</span> — پہلی مرتبہ PP-36 (Sargodha-IX) سے پنجاب اسمبلی کے رکن منتخب ہوئے۔</li>
+                <li><span class="font-bold">2013–2018</span> — دوسری مدت میں پاکستان مسلم لیگ (ن) کی ٹکٹ پر دوبارہ منتخب ہوئے اور اسمبلی کی مختلف اسٹینڈنگ کمیٹیوں، جیسے Population Welfare اور Public Accounts Committee-II میں اہم کردار ادا کیا۔</li>
+                <li><span class="font-bold">2018–2023</span> — تیسری بار PP-79 (Sargodha-VIII) سے کامیابی حاصل کی اور صوبائی سطح پر تعلیم، صحت، اور انفراسٹرکچر کے شعبوں میں متعدد ترقیاتی اقدامات کیے۔</li>
+                <li><span class="font-bold">2024 تا حال</span> — موجودہ (18ویں) پنجاب اسمبلی میں PP-78 (Sargodha-VIII) کی نمائندگی کر رہے ہیں اور Specialized Healthcare and Medical Education سمیت دیگر کمیٹیوں میں سرگرم ہیں۔</li>
+              </ul>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">وژن اور مقاصد</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                رانا منور غوث خان کا مقصد ایک ایسا مضبوط اور خوشحال سرگودھا بنانا ہے جہاں تعلیم، صحت، اور روزگار کے مواقع ہر شہری کو یکساں میسر ہوں۔ ان کی سیاست خدمت، دیانتداری اور عوامی اعتماد پر مبنی ہے۔
+              </p>
+            </section>
+          </div>
+        `
+      },
+
+      'zakat-programs': {
+        title: 'عشر و زکوٰۃ کے منصوبے — رانا منور غوث خان',
+        metaDescription: 'عشر و زکوٰۃ کے شعبے میں فلاحی منصوبے اور اقدامات۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">عشر و زکوٰۃ کے منصوبے</h1>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <p class="text-lg text-gray-700 dark:text-gray-200">
+                    بطور وزیر عشر و زکوٰۃ، رانا منور غوث خان کا ہدف زکوٰۃ کے نظام کو زیادہ سے زیادہ شفاف، مؤثر اور بااختیار بنانا ہے۔ ان کے زیرِ نگرانی، کئی نئے منصوبے شروع کیے گئے ہیں تاکہ مستحق افراد کو عزت اور وقار کے ساتھ ان کا حق مل سکے۔
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Zakat+Projects" alt="" class="rounded-xl shadow-lg-custom w-full h-auto">
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">اہم اقدامات</h2>
+              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
+                <li>مستحق خاندانوں کی مالی معاونت کے لیے نئے فنڈز کا قیام۔</li>
+                <li>زکوٰۃ کی تقسیم کے عمل کو ڈیجیٹلائز کرنا تاکہ شفافیت یقینی بنائی جا سکے۔</li>
+                <li>بیواؤں، یتیموں اور معذور افراد کے لیے خصوصی امدادی پروگراموں کا آغاز۔</li>
+                <li>صحت، تعلیم اور ہنر مندی کی تربیت کے شعبوں میں زکوٰۃ کی رقم کو استعمال کرنے کے منصوبے۔</li>
+              </ul>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">مستقبل کا وژن</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-200">
+                ہمارا وژن ایک ایسے معاشرے کی تشکیل ہے جہاں کوئی بھی خاندان بھوک اور غربت کی وجہ سے مشکلات کا شکار نہ ہو۔ عشر و زکوٰۃ کے نظام کو ایک مضبوط بنیاد بنانا تاکہ وہ سماجی بہبود اور معاشی استحکام میں ایک کلیدی کردار ادا کرے۔
+              </p>
+            </section>
+          </div>
+        `
+      },
+
+      'public-welfare-projects': {
+        title: 'عوامی فلاحی منصوبے — رانا منور غوث خان',
+        metaDescription: 'عوامی فلاح و بہبود کے منصوبے۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">عوامی فلاحی منصوبے</h1>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <p class="text-lg text-gray-700 dark:text-gray-200">
+                    عوامی فلاح و بہبود رانا منور غوث خان کی سیاست کا بنیادی اصول ہے۔ ان کی کوشش ہے کہ وہ تعلیم، صحت اور معاشرتی ترقی کے شعبوں میں ایسے منصوبے شروع کریں جو عوام کی زندگیوں میں حقیقی تبدیلی لا سکیں۔
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Welfare+Projects" alt="" class="rounded-xl shadow-lg-custom w-full h-auto">
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">اہم منصوبے</h2>
+              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
+                <li>عوامی شفاخانوں میں ادویات کی مفت فراہمی۔</li>
+                <li>مفید و ہنر مند تعلیم کے فروغ کے لیے سکالرشپ پروگرام۔</li>
+                <li>صاف پانی کی فراہمی کے منصوبے۔</li>
+                <li>ماحولیات کی حفاظت اور شجرکاری مہم۔</li>
+              </ul>
+            </section>
+          </div>
+        `
+      },
+
+      'development-projects': {
+        title: 'ترقیاتی منصوبے — رانا منور غوث خان',
+        metaDescription: 'ترقیاتی منصوبے اور بنیادی ڈھانچے میں بہتری۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">ترقیاتی منصوبے</h1>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <p class="text-lg text-gray-700 dark:text-gray-200">
+                    رانا منور غوث خان نے اپنے حلقے اور صوبے میں ترقیاتی منصوبوں کے لیے بے مثال خدمات سر انجام دی ہیں۔ ان کی کوششوں سے بنیادی ڈھانچے میں بہتری آئی ہے، جس سے عوام کو روزمرہ زندگی میں آسانی ہوئی ہے۔
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754673021/WhatsApp_Image_2025-08-08_at_22.07.54_qlg3g3.jpg" alt="ترقیاتی منصوبہ" class="rounded-xl shadow-lg-custom w-full h-auto">
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">بنیادی ڈھانچے کی بہتری</h2>
+              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
+                <li>سڑکوں کی تعمیر اور مرمت۔</li>
+                <li>گلیوں اور نالیوں کی تعمیر۔</li>
+                <li>پارکس اور عوامی مقامات کی تعمیر اور بحالی۔</li>
+                <li>نئے اسکولوں اور کالجوں کا قیام۔</li>
+              </ul>
+            </section>
+          </div>
+        `
+      },
+
+      message: {
+        title: 'وزیر کا پیغام — رانا منور غوث خان',
+        metaDescription: 'عوامی پیغام، وژن اور مستقبل کا عزم۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">وزیر کا پیغام</h1>
+
+            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <p class="text-lg text-gray-700 dark:text-gray-200">
+                    "عوام کی خدمت میرا اولین فرض اور سب سے بڑا مقصد ہے۔ میری زندگی کا ہر لمحہ اپنے لوگوں کی فلاح و بہبود کے لیے وقف ہے۔ میں چاہتا ہوں کہ ہمارا صوبہ ترقی کی نئی منازل طے کرے اور ہر شہری کو اس کی محنت کا پھل ملے اور وہ اپنی زندگی کو بہتر بنا سکے۔ مجھے امید ہے کہ ہم سب مل کر ایک ایسا معاشرہ تشکیل دیں گے جہاں انصاف، مساوات اور خوشحالی ہو۔"
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754582262/RANA_MUNAWAR_yddsa7.jpg" alt="رانا منور غوث خان" class="rounded-xl shadow-lg-custom w-full h-auto">
+                </div>
+              </div>
+            </section>
+          </div>
+        `
+      },
+
+      contact: {
+        title: 'ہم سے رابطہ کریں — رانا منور غوث خان',
+        metaDescription: 'رابطہ کی معلومات۔',
+        html: `
+          <div class="container text-content">
+            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">ہم سے رابطہ کریں</h1>
+
+            <div class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom max-w-2xl mx-auto">
+              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6 text-center">رابطہ کی معلومات</h2>
+              <div class="text-lg text-gray-700 dark:text-gray-200 space-y-4">
+                <p><span class="font-bold">عوامی سیکرٹریٹ:</span><br/> عمر پارک، نزد 47 پل، سرگودھا</p>
+                <p><span class="font-bold">ڈیرہ کا پتا:</span><br/> رانا منور غوث ڈیرہ، 120 ایس بی، سرگودھا</p>
+                <p><span class="font-bold">ٹیلی فون:</span><br/> <a href="tel:03008700120" class="text-brand dark:text-primary hover:underline">03008700120</a></p>
+                <p><span class="font-bold">واٹس ایپ:</span><br/> <a href="https://wa.me/923008700120" target="_blank" class="text-primary hover:underline">واٹس ایپ پر رابطہ کریں</a></p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+    };
+
+    // Load page
+    function loadPage(pageName, event){
+      if(event) event.preventDefault();
+      const page = pages[pageName];
+      if(page){
+        // Title & meta
+        document.title = page.title;
+        const meta = document.querySelector('meta[name="description"]');
+        if(meta) meta.setAttribute('content', page.metaDescription || '');
+
+        // Content
+        contentDiv.innerHTML = page.html;
+
+        // Close mobile
+        if(!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+
+        // Active nav
+        document.querySelectorAll('.nav-item').forEach((a)=>{
+          if(a.dataset.page === pageName) a.classList.add('active');
+          else a.classList.remove('active');
         });
 
-        chatbotClose.addEventListener('click', () => {
-            chatbotContainer.classList.remove('open');
-        });
+        // Remember last page
+        localStorage.setItem('rmgh-last-page', pageName);
+      } else {
+        contentDiv.innerHTML = '<div class="container text-content"><h1 class="text-3xl font-bold text-red-600">صفحہ نہیں ملا۔</h1><p class="text-lg">معذرت، یہ صفحہ دستیاب نہیں ہے۔</p></div>';
+      }
+    }
 
-        // Function to add a message to the chat window
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            messageDiv.innerHTML = `<p>${text}</p>`;
-            chatbotMessages.prepend(messageDiv); // Prepend to show new messages at the bottom (due to flex-direction-reverse)
-        }
-
-        // Function to send message to AI
-        async function sendMessageToAI(prompt) {
-            addMessage('...ٹائپ کر رہا ہے', 'bot loading-indicator'); // Add loading indicator
-            const loadingMessage = chatbotMessages.querySelector('.loading-indicator');
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-
-                if (loadingMessage) {
-                    loadingMessage.remove(); // Remove loading indicator
-                }
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    addMessage(text, 'bot');
-                } else {
-                    addMessage('معذرت، میں آپ کے سوال کا جواب نہیں دے سکا۔ براہ کرم دوبارہ کوشش کریں۔', 'bot');
-                    console.error('AI response structure unexpected:', result);
-                }
-            } catch (error) {
-                if (loadingMessage) {
-                    loadingMessage.remove(); // Remove loading indicator
-                }
-                addMessage('معذرت، ایک خرابی پیش آگئی۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔', 'bot');
-                console.error('Error calling Gemini API:', error);
-            }
-        }
-
-        // Send message on button click or Enter key press
-        chatbotSend.addEventListener('click', () => {
-            const userMessage = chatbotInput.value.trim();
-            if (userMessage) {
-                addMessage(userMessage, 'user');
-                sendMessageToAI(userMessage);
-                chatbotInput.value = '';
-            }
-        });
-
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                chatbotSend.click();
-            }
-        });
-    </script>
+    // Initial
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const last = localStorage.getItem('rmgh-last-page') || 'home';
+      loadPage(last);
+    });
+  </script>
 </body>
-                        </html>
+              </html>
