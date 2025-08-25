@@ -1,480 +1,94 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>رانا منور غوث خان — صوبائی وزیر برائے عشر و زکوٰۃ</title>
-  <meta name="description" content="رانا منور غوث خان — تجربہ کار عوامی رہنما، صوبائی وزیر برائے عشر و زکوٰۃ۔ عوامی خدمت، شفافیت اور فلاحی منصوبوں کا عزم۔" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            urdu: ['"Jameel Noori Nastaleeq"', 'Noto Nastaliq Urdu', 'sans-serif'],
-            inter: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            primary: { DEFAULT: '#1abc9c', dark: '#16a085' },
-            brand: '#2c3e50',
-          },
-        },
-      },
-    }
-  </script>
-
-  <!-- Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Pizza Shop</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
-    @font-face{
-      font-family:'Jameel Noori Nastaleeq';
-      src:url('https://cdn.jsdelivr.net/font-jameel-noori-nastaleeq/Jameel-Noori-Nastaleeq.ttf') format('truetype');
-      font-weight:normal; font-style:normal;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #fff8f0;
     }
-    :root{ scroll-behavior:smooth; }
-    body{ font-family:'urdu','Noto Nastaliq Urdu','Inter',sans-serif; background-color:#f4f7f6; }
-    .container{ max-width:1280px; margin:0 auto; padding:0 1rem; }
-    .text-content p,.text-content ul,.text-content h1,.text-content h2,.text-content h3,.text-content h4,.text-content h5{ text-align:right; direction:rtl; }
-    .text-content p{ line-height:2; }
-    .shadow-lg-custom{ box-shadow:0 10px 20px rgba(0,0,0,.1),0 6px 6px rgba(0,0,0,.15); }
-    .nav-item.active{ color:#1abc9c !important; }
+    header {
+      background: #e63946;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #f1faee;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+    .menu-item {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      display: inline-block;
+      width: 200px;
+      background: #fff;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
   </style>
 </head>
-
-<body class="bg-gray-50 text-gray-800 dark:bg-[#0b141a] dark:text-gray-100">
-  <!-- Header -->
-  <header class="bg-white/90 backdrop-blur shadow-lg-custom sticky top-0 z-50 dark:bg-[#0f1b22]/80">
-    <div class="container flex items-center justify-between py-3">
-      <a href="#" class="flex items-center space-x-2 space-x-reverse" onclick="loadPage('home', event)">
-        <span class="text-2xl md:text-3xl font-bold text-brand dark:text-white">رانا منور غوث خان</span>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-4 text-lg font-urdu font-semibold">
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="home" onclick="loadPage('home', event)">ہوم</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="about" onclick="loadPage('about', event)">تعارف</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="political-career" onclick="loadPage('political-career', event)">سیاسی سفر</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="zakat-programs" onclick="loadPage('zakat-programs', event)">عشر و زکوٰۃ کے منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="public-welfare-projects" onclick="loadPage('public-welfare-projects', event)">عوامی فلاحی منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="development-projects" onclick="loadPage('development-projects', event)">ترقیاتی منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="message" onclick="loadPage('message', event)">وزیر کا پیغام</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="contact" onclick="loadPage('contact', event)">ہم سے رابطہ</a>
-
-        <!-- Dark mode -->
-        <button id="themeToggle" class="ml-2 rounded-full border px-3 py-1 text-sm text-gray-700 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-white/10">
-          ڈارک/لائٹ
-        </button>
-      </nav>
-
-      <!-- Mobile buttons -->
-      <div class="md:hidden flex items-center gap-2">
-        <button id="themeToggleMobile" class="rounded-full border px-3 py-1 text-sm text-gray-700 dark:text-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-white/10">
-          موڈ
-        </button>
-        <button id="menu-button" class="text-gray-700 dark:text-gray-100 focus:outline-none" aria-label="menu">
-          <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#0f1b22] shadow-lg-custom p-4 border-t dark:border-gray-800">
-      <nav class="flex flex-col space-y-2 text-lg font-urdu font-semibold">
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="home" onclick="loadPage('home', event)">ہوم</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="about" onclick="loadPage('about', event)">تعارف</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="political-career" onclick="loadPage('political-career', event)">سیاسی سفر</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="zakat-programs" onclick="loadPage('zakat-programs', event)">عشر و زکوٰۃ کے منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="public-welfare-projects" onclick="loadPage('public-welfare-projects', event)">عوامی فلاحی منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="development-projects" onclick="loadPage('development-projects', event)">ترقیاتی منصوبے</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="message" onclick="loadPage('message', event)">وزیر کا پیغام</a>
-        <a href="#" class="nav-item text-gray-700 dark:text-gray-200" data-page="contact" onclick="loadPage('contact', event)">ہم سے رابطہ</a>
-      </nav>
-    </div>
+<body>
+  <header>
+    <h1>🍕 Welcome to My Pizza Shop 🍕</h1>
+    <p>Best Pizza in Town!</p>
   </header>
 
-  <!-- Main -->
-  <main id="content" class="py-10 px-4"></main>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order Now</a>
+  </nav>
 
-  <!-- Footer -->
-  <footer class="bg-brand text-white py-8 text-center font-urdu mt-12">
-    <div class="container flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="text-center md:text-right">
-        <p class="text-base">&copy; 2025 رانا منور غوث خان — تمام حقوق محفوظ ہیں۔</p>
-        <div class="mt-2 text-sm opacity-90">
-          <a href="#" class="hover:underline mx-2">رازداری کی پالیسی</a> |
-          <a href="#" class="hover:underline mx-2">شرائطِ استعمال</a>
-        </div>
-      </div>
+  <section id="home">
+    <h2>Fresh & Hot Pizza Delivered to You</h2>
+    <p>We use fresh ingredients to make delicious pizzas just for you.</p>
+  </section>
 
-      <div class="flex items-center gap-4">
-        <a href="https://www.facebook.com/share/19YSx7PmtZ/" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.505 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
-          </svg>
-          <span>فیس بک</span>
-        </a>
-        <a href="https://www.tiktok.com/@rana.munawar.ghous?_t=ZN-8ygQbUCu6pa&_r=1" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12.525 2.5v17.493c0 .025.025.05.05.05h1.229c.334 0 .552-.294.498-.636l-.004-3.037c.026-.008.051-.019.076-.027 3.018-1.427 4.986-4.524 4.986-8.243C19.36 4.708 16.326 2 12.525 2Zm-.023 15.655v-10.74c0-.623.504-1.127 1.127-1.127h2.366c.264 0 .478-.214.478-.478V3.5c0-.264-.214-.478-.478-.478h-2.366c-2.348 0-4.254 1.906-4.254 4.254v1.125h2.185v1.36h-2.185v4.545c0 1.942 1.579 3.521 3.521 3.521h1.127c.264 0 .478.214.478.478v.952c0 .264-.214.478-.478.478H12.522c-.623 0-1.127-.504-1.127-1.127v-1.125c0-.623.504-1.127 1.127-1.127h.001Z"/>
-          </svg>
-          <span>ٹک ٹاک</span>
-        </a>
-        <a href="https://wa.me/923008700120" target="_blank" class="flex items-center gap-2 text-lg hover:text-primary">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12.012 2.012c-5.525 0-10.001 4.476-10.001 10.001 0 1.761.464 3.42.138 4.965l-1.07 3.924a.5.5 0 0 0 .614.614l3.924-1.07c1.545.326 3.204.138 4.965.138 5.525 0 10.001-4.476 10.001-10.001s-4.476-10.001-10.001-10.001z"/>
-          </svg>
-          <span>واٹس ایپ</span>
-        </a>
-      </div>
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-item">
+      <h3>Margherita</h3>
+      <p>Cheese & Tomato</p>
+      <p><b>Rs. 500</b></p>
     </div>
-  </footer>
+    <div class="menu-item">
+      <h3>BBQ Chicken</h3>
+      <p>Spicy BBQ Chicken</p>
+      <p><b>Rs. 700</b></p>
+    </div>
+    <div class="menu-item">
+      <h3>Veggie Delight</h3>
+      <p>Fresh Veggies & Cheese</p>
+      <p><b>Rs. 600</b></p>
+    </div>
+  </section>
 
-  <script>
-    // Elements
-    const contentDiv = document.getElementById('content');
-    const mobileMenuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+  <section id="order">
+    <h2>Order Online</h2>
+    <p>Please fill out the form below to place your order.</p>
 
-    // Theme (Dark/Light) persistence
-    const THEME_KEY = 'rmgh-theme';
-    function applyTheme(theme){
-      const root = document.documentElement;
-      if(theme === 'dark'){ root.classList.add('dark'); }
-      else { root.classList.remove('dark'); }
-      localStorage.setItem(THEME_KEY, theme);
-    }
-    (function initTheme(){
-      const saved = localStorage.getItem(THEME_KEY) || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      applyTheme(saved);
-    })();
-    document.getElementById('themeToggle').addEventListener('click', ()=> {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(isDark ? 'light' : 'dark');
-    });
-    document.getElementById('themeToggleMobile').addEventListener('click', ()=> {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(isDark ? 'light' : 'dark');
-    });
-
-    // Mobile menu
-    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    // Pages data
-    const pages = {
-      home: {
-        title: 'رانا منور غوث خان — صوبائی وزیر برائے عشر و زکوٰۃ',
-        metaDescription: 'رانا منور غوث خان — تجربہ کار عوامی رہنما، صوبائی وزیر برائے عشر و زکوٰۃ۔ عوامی خدمت، شفافیت اور فلاحی منصوبوں کا عزم۔',
-        html: `
-          <div class="container text-content">
-            <!-- Hero -->
-            <section class="rounded-xl shadow-lg-custom mb-12 relative overflow-hidden bg-cover bg-center" style="background-image:url('https://res.cloudinary.com/do4v5zrwm/image/upload/v1754586931/WhatsApp_Image_2025-08-07_at_22.14.45_msmfcg.jpg');">
-              <div class="bg-brand/80 text-white py-16 px-4 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold">خدمت، امانت، دیانت</h1>
-                <p class="text-xl md:text-2xl mt-4">رانا منور غوث خان — تجربہ کار اور عوام دوست سیاستدان۔</p>
-              </div>
-            </section>
-
-            <!-- Intro -->
-            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom mb-12">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">مختصر تعارف</h2>
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                رانا منور غوث خان ایک تجربہ کار سیاستدان ہیں جنہوں نے اپنی زندگی عوام کی خدمت کے لیے وقف کر رکھی ہے۔ انہوں نے اپنی تعلیم مکمل کرنے کے بعد سیاست میں قدم رکھا اور جلد ہی اپنی محنت اور لگن سے عوام کا اعتماد حاصل کیا۔ ان کا سیاسی سفر کئی اہم سنگ میلوں سے بھرا پڑا ہے، جس میں انہوں نے ہمیشہ عوام کے حقوق کے لیے آواز بلند کی اور ان کے مسائل کے حل کے لیے عملی اقدامات کیے۔ ان کی کامیابیاں ان کی انتھک محنت اور عوام دوستی کا ثبوت ہیں۔
-              </p>
-            </section>
-
-            <!-- Quick Links -->
-            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom mb-12">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6 text-center">فوری لنکس</h2>
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="#" onclick="loadPage('about', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">تعارف</a>
-                <a href="#" onclick="loadPage('political-career', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg白/20 transition">سیاسی سفر</a>
-                <a href="#" onclick="loadPage('zakat-programs', event)" class="bg-gray-100 dark:bg_white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">عشر و زکوٰۃ کے منصوبے</a>
-                <a href="#" onclick="loadPage('public-welfare-projects', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">عوامی فلاحی منصوبے</a>
-                <a href="#" onclick="loadPage('development-projects', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">ترقیاتی منصوبے</a>
-                <a href="#" onclick="loadPage('message', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">وزیر کا پیغام</a>
-                <a href="#" onclick="loadPage('contact', event)" class="bg-gray-100 dark:bg-white/10 p-6 rounded-xl text-center font-semibold text-xl hover:bg-gray-200 dark:hover:bg-white/20 transition">ہم سے رابطہ</a>
-              </div>
-            </section>
-
-            <!-- CTA -->
-            <section class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom text-center">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6">عوام کی خدمت، ہمارا مقصد</h2>
-              <a href="#" onclick="loadPage('about', event)" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-primary-dark transition">مزید جانیں</a>
-            </section>
-          </div>
-        `
-      },
-
-      about: {
-        title: 'تعارف — رانا منور غوث خان',
-        metaDescription: 'رانا منور غوث خان کی سوانح عمری، ابتدائی زندگی، تعلیم اور وژن برائے عوامی خدمت۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">تعارف</h1>
-
-            <div class="grid md:grid-cols-2 gap-8 items-center mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="order-2 md:order-1">
-                <p class="text-lg text-gray-700 dark:text-gray-200">
-                  رانا منور غوث خان ایک سوچے سمجھے، باعلم اور عوام دوست رہنما ہیں۔ آپ نے اپنے تعلیمی سفر اور سماجی خدمات کے ذریعے عوام کا اعتماد حاصل کیا اور اپنی سیاست کا محور ہمیشہ فلاحِ عامہ رکھا۔
-                </p>
-              </div>
-              <div class="order-1 md:order-2">
-                <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754582262/RANA_MUNAWAR_yddsa7.jpg" alt="رانا منور غوث خان کی پروفائل تصویر" class="rounded-xl shadow-lg-custom w-full h-auto">
-              </div>
-            </div>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">ابتدائی زندگی اور تعلیم</h2>
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                رانا منور غوث خان نے اپنی ابتدائی تعلیم مقامی اسکول سے حاصل کی اور آگے بڑھتے ہوئے علم کی پیاس کو جاری رکھا۔ انہوں نے 1991 میں گورنمنٹ کالج سرگودھا سے بیچلر کی ڈگری حاصل کی، جو ان کے علمی سفر کا ایک اہم سنگ میل ہے۔ تعلیم کے دوران وہ نہ صرف تعلیمی میدان میں سرگرم رہے بلکہ سماجی و فلاحی کاموں میں بھی بڑھ چڑھ کر حصہ لیتے رہے، جس نے بعد ازاں ان کی سیاسی بصیرت کو نکھارنے میں بنیادی کردار ادا کیا۔
-              </p>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">بطور وزیر تقرری</h2>
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                آپ اس وقت صوبہ پنجاب کے وزیر برائے عشر و زکوٰۃ کے طور پر خدمات انجام دے رہے ہیں،
-              </p>
-            </section>
-          </div>
-        `
-      },
-
-      'political-career': {
-        title: 'سیاسی سفر — رانا منور غوث خان',
-        metaDescription: 'رانا منور غوث خان کا سیاسی کیریئر، اہم عہدے اور عوامی خدمات۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">رانا منور غوث خان — سیاسی سفر</h1>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                رانا منور غوث خان، ضلع سرگودھا کے ایک مخلص اور تجربہ کار عوامی نمائندے ہیں، جو کئی دہائیوں سے عملی سیاست میں سرگرم ہیں۔ ان کا سیاسی سفر خدمت، شفافیت، اور عوامی فلاح کے عزم سے جڑا ہوا ہے۔
-              </p>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                  <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">ابتدائی سیاسی قدم</h2>
-                  <p class="text-lg text-gray-700 dark:text-gray-200">
-                    رانا منور غوث خان نے اپنے سیاسی سفر کا آغاز 2001 میں کیا، جب وہ تحصیل ناظم سلانوالی منتخب ہوئے۔ اس دور میں انہوں نے مقامی ترقیاتی منصوبوں، بنیادی سہولیات کی فراہمی، اور عوامی مسائل کے فوری حل پر خصوصی توجہ دی۔
-                  </p>
-                </div>
-                <div class="order-1 md:order-2">
-                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754586929/WhatsApp_Image_2025-08-07_at_22.13.35_ieprf7.jpg" alt="رانا منور غوث خان کا عوامی اجتماع" class="rounded-xl shadow-lg-custom w-full h-auto">
-                </div>
-              </div>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">پنجاب اسمبلی میں خدمات</h2>
-              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-2">
-                <li><span class="font-bold">2008–2013</span> — پہلی مرتبہ PP-36 (Sargodha-IX) سے پنجاب اسمبلی کے رکن منتخب ہوئے۔</li>
-                <li><span class="font-bold">2013–2018</span> — دوسری مدت میں پاکستان مسلم لیگ (ن) کی ٹکٹ پر دوبارہ منتخب ہوئے اور اسمبلی کی مختلف اسٹینڈنگ کمیٹیوں، جیسے Population Welfare اور Public Accounts Committee-II میں اہم کردار ادا کیا۔</li>
-                <li><span class="font-bold">2018–2023</span> — تیسری بار PP-79 (Sargodha-VIII) سے کامیابی حاصل کی اور صوبائی سطح پر تعلیم، صحت، اور انفراسٹرکچر کے شعبوں میں متعدد ترقیاتی اقدامات کیے۔</li>
-                <li><span class="font-bold">2024 تا حال</span> — موجودہ (18ویں) پنجاب اسمبلی میں PP-78 (Sargodha-VIII) کی نمائندگی کر رہے ہیں اور Specialized Healthcare and Medical Education سمیت دیگر کمیٹیوں میں سرگرم ہیں۔</li>
-              </ul>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">وژن اور مقاصد</h2>
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                رانا منور غوث خان کا مقصد ایک ایسا مضبوط اور خوشحال سرگودھا بنانا ہے جہاں تعلیم، صحت، اور روزگار کے مواقع ہر شہری کو یکساں میسر ہوں۔ ان کی سیاست خدمت، دیانتداری اور عوامی اعتماد پر مبنی ہے۔
-              </p>
-            </section>
-          </div>
-        `
-      },
-
-      'zakat-programs': {
-        title: 'عشر و زکوٰۃ کے منصوبے — رانا منور غوث خان',
-        metaDescription: 'عشر و زکوٰۃ کے شعبے میں فلاحی منصوبے اور اقدامات۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">عشر و زکوٰۃ کے منصوبے</h1>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                  <p class="text-lg text-gray-700 dark:text-gray-200">
-                    بطور وزیر عشر و زکوٰۃ، رانا منور غوث خان کا ہدف زکوٰۃ کے نظام کو زیادہ سے زیادہ شفاف، مؤثر اور بااختیار بنانا ہے۔ ان کے زیرِ نگرانی، کئی نئے منصوبے شروع کیے گئے ہیں تاکہ مستحق افراد کو عزت اور وقار کے ساتھ ان کا حق مل سکے۔
-                  </p>
-                </div>
-                <div class="order-1 md:order-2">
-                  <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Zakat+Projects" alt="" class="rounded-xl shadow-lg-custom w-full h-auto">
-                </div>
-              </div>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">اہم اقدامات</h2>
-              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
-                <li>مستحق خاندانوں کی مالی معاونت کے لیے نئے فنڈز کا قیام۔</li>
-                <li>زکوٰۃ کی تقسیم کے عمل کو ڈیجیٹلائز کرنا تاکہ شفافیت یقینی بنائی جا سکے۔</li>
-                <li>بیواؤں، یتیموں اور معذور افراد کے لیے خصوصی امدادی پروگراموں کا آغاز۔</li>
-                <li>صحت، تعلیم اور ہنر مندی کی تربیت کے شعبوں میں زکوٰۃ کی رقم کو استعمال کرنے کے منصوبے۔</li>
-              </ul>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">مستقبل کا وژن</h2>
-              <p class="text-lg text-gray-700 dark:text-gray-200">
-                ہمارا وژن ایک ایسے معاشرے کی تشکیل ہے جہاں کوئی بھی خاندان بھوک اور غربت کی وجہ سے مشکلات کا شکار نہ ہو۔ عشر و زکوٰۃ کے نظام کو ایک مضبوط بنیاد بنانا تاکہ وہ سماجی بہبود اور معاشی استحکام میں ایک کلیدی کردار ادا کرے۔
-              </p>
-            </section>
-          </div>
-        `
-      },
-
-      'public-welfare-projects': {
-        title: 'عوامی فلاحی منصوبے — رانا منور غوث خان',
-        metaDescription: 'عوامی فلاح و بہبود کے منصوبے۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">عوامی فلاحی منصوبے</h1>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                  <p class="text-lg text-gray-700 dark:text-gray-200">
-                    عوامی فلاح و بہبود رانا منور غوث خان کی سیاست کا بنیادی اصول ہے۔ ان کی کوشش ہے کہ وہ تعلیم، صحت اور معاشرتی ترقی کے شعبوں میں ایسے منصوبے شروع کریں جو عوام کی زندگیوں میں حقیقی تبدیلی لا سکیں۔
-                  </p>
-                </div>
-                <div class="order-1 md:order-2">
-                  <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Welfare+Projects" alt="" class="rounded-xl shadow-lg-custom w-full h-auto">
-                </div>
-              </div>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">اہم منصوبے</h2>
-              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
-                <li>عوامی شفاخانوں میں ادویات کی مفت فراہمی۔</li>
-                <li>مفید و ہنر مند تعلیم کے فروغ کے لیے سکالرشپ پروگرام۔</li>
-                <li>صاف پانی کی فراہمی کے منصوبے۔</li>
-                <li>ماحولیات کی حفاظت اور شجرکاری مہم۔</li>
-              </ul>
-            </section>
-          </div>
-        `
-      },
-
-      'development-projects': {
-        title: 'ترقیاتی منصوبے — رانا منور غوث خان',
-        metaDescription: 'ترقیاتی منصوبے اور بنیادی ڈھانچے میں بہتری۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">ترقیاتی منصوبے</h1>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                  <p class="text-lg text-gray-700 dark:text-gray-200">
-                    رانا منور غوث خان نے اپنے حلقے اور صوبے میں ترقیاتی منصوبوں کے لیے بے مثال خدمات سر انجام دی ہیں۔ ان کی کوششوں سے بنیادی ڈھانچے میں بہتری آئی ہے، جس سے عوام کو روزمرہ زندگی میں آسانی ہوئی ہے۔
-                  </p>
-                </div>
-                <div class="order-1 md:order-2">
-                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754673021/WhatsApp_Image_2025-08-08_at_22.07.54_qlg3g3.jpg" alt="ترقیاتی منصوبہ" class="rounded-xl shadow-lg-custom w-full h-auto">
-                </div>
-              </div>
-            </section>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-4">بنیادی ڈھانچے کی بہتری</h2>
-              <ul class="list-disc pr-6 text-lg text-gray-700 dark:text-gray-200 space-y-1">
-                <li>سڑکوں کی تعمیر اور مرمت۔</li>
-                <li>گلیوں اور نالیوں کی تعمیر۔</li>
-                <li>پارکس اور عوامی مقامات کی تعمیر اور بحالی۔</li>
-                <li>نئے اسکولوں اور کالجوں کا قیام۔</li>
-              </ul>
-            </section>
-          </div>
-        `
-      },
-
-      message: {
-        title: 'وزیر کا پیغام — رانا منور غوث خان',
-        metaDescription: 'عوامی پیغام، وژن اور مستقبل کا عزم۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">وزیر کا پیغام</h1>
-
-            <section class="mb-12 bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom">
-              <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                  <p class="text-lg text-gray-700 dark:text-gray-200">
-                    "عوام کی خدمت میرا اولین فرض اور سب سے بڑا مقصد ہے۔ میری زندگی کا ہر لمحہ اپنے لوگوں کی فلاح و بہبود کے لیے وقف ہے۔ میں چاہتا ہوں کہ ہمارا صوبہ ترقی کی نئی منازل طے کرے اور ہر شہری کو اس کی محنت کا پھل ملے اور وہ اپنی زندگی کو بہتر بنا سکے۔ مجھے امید ہے کہ ہم سب مل کر ایک ایسا معاشرہ تشکیل دیں گے جہاں انصاف، مساوات اور خوشحالی ہو۔"
-                  </p>
-                </div>
-                <div class="order-1 md:order-2">
-                  <img src="https://res.cloudinary.com/do4v5zrwm/image/upload/v1754582262/RANA_MUNAWAR_yddsa7.jpg" alt="رانا منور غوث خان" class="rounded-xl shadow-lg-custom w-full h-auto">
-                </div>
-              </div>
-            </section>
-          </div>
-        `
-      },
-
-      contact: {
-        title: 'ہم سے رابطہ کریں — رانا منور غوث خان',
-        metaDescription: 'رابطہ کی معلومات۔',
-        html: `
-          <div class="container text-content">
-            <h1 class="text-4xl font-bold text-brand dark:text-white mb-8">ہم سے رابطہ کریں</h1>
-
-            <div class="bg-white dark:bg-[#0f1b22] p-8 rounded-xl shadow-lg-custom max-w-2xl mx-auto">
-              <h2 class="text-3xl font-bold text-brand dark:text-white mb-6 text-center">رابطہ کی معلومات</h2>
-              <div class="text-lg text-gray-700 dark:text-gray-200 space-y-4">
-                <p><span class="font-bold">عوامی سیکرٹریٹ:</span><br/> عمر پارک، نزد 47 پل، سرگودھا</p>
-                <p><span class="font-bold">ڈیرہ کا پتا:</span><br/> رانا منور غوث ڈیرہ، 120 ایس بی، سرگودھا</p>
-                <p><span class="font-bold">ٹیلی فون:</span><br/> <a href="tel:03008700120" class="text-brand dark:text-primary hover:underline">03008700120</a></p>
-                <p><span class="font-bold">واٹس ایپ:</span><br/> <a href="https://wa.me/923008700120" target="_blank" class="text-primary hover:underline">واٹس ایپ پر رابطہ کریں</a></p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-    };
-
-    // Load page
-    function loadPage(pageName, event){
-      if(event) event.preventDefault();
-      const page = pages[pageName];
-      if(page){
-        // Title & meta
-        document.title = page.title;
-        const meta = document.querySelector('meta[name="description"]');
-        if(meta) meta.setAttribute('content', page.metaDescription || '');
-
-        // Content
-        contentDiv.innerHTML = page.html;
-
-        // Close mobile
-        if(!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
-
-        // Active nav
-        document.querySelectorAll('.nav-item').forEach((a)=>{
-          if(a.dataset.page === pageName) a.classList.add('active');
-          else a.classList.remove('active');
-        });
-
-        // Remember last page
-        localStorage.setItem('rmgh-last-page', pageName);
-      } else {
-        contentDiv.innerHTML = '<div class="container text-content"><h1 class="text-3xl font-bold text-red-600">صفحہ نہیں ملا۔</h1><p class="text-lg">معذرت، یہ صفحہ دستیاب نہیں ہے۔</p></div>';
-      }
-    }
-
-    // Initial
-    document.addEventListener('DOMContentLoaded', ()=>{
-      const last = localStorage.getItem('rmgh-last-page') || 'home';
-      loadPage(last);
-    });
-  </script>
+    <!-- Yahan apna Google Form embed karein -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScn...your-form-link.../viewform?embedded=true"></iframe>
+  </section>
 </body>
-              </html>
+</html>
